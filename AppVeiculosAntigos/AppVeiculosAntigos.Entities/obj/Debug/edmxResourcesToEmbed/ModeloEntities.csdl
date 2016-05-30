@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VeiculosAntigosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TbFabricante">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TbVeiculo" Relationship="Self.FK__TbVeiculo__IdFab__145C0A3F" FromRole="TbFabricante" ToRole="TbVeiculo" />
+  </EntityType>
+  <EntityType Name="TbTipoDeVeiculo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TbVeiculo" Relationship="Self.FK__TbVeiculo__IdTip__15502E78" FromRole="TbTipoDeVeiculo" ToRole="TbVeiculo" />
+  </EntityType>
+  <EntityType Name="TbVeiculo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="AnoFabricao" Type="Int32" />
+    <Property Name="Modelo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IdFabricante" Type="Int32" />
+    <Property Name="IdTipoVeiculo" Type="Int32" />
+    <NavigationProperty Name="TbFabricante" Relationship="Self.FK__TbVeiculo__IdFab__145C0A3F" FromRole="TbVeiculo" ToRole="TbFabricante" />
+    <NavigationProperty Name="TbTipoDeVeiculo" Relationship="Self.FK__TbVeiculo__IdTip__15502E78" FromRole="TbVeiculo" ToRole="TbTipoDeVeiculo" />
+  </EntityType>
+  <Association Name="FK__TbVeiculo__IdFab__145C0A3F">
+    <End Role="TbFabricante" Type="Self.TbFabricante" Multiplicity="0..1" />
+    <End Role="TbVeiculo" Type="Self.TbVeiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbFabricante">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TbVeiculo">
+        <PropertyRef Name="IdFabricante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TbVeiculo__IdTip__15502E78">
+    <End Role="TbTipoDeVeiculo" Type="Self.TbTipoDeVeiculo" Multiplicity="0..1" />
+    <End Role="TbVeiculo" Type="Self.TbVeiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TbTipoDeVeiculo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TbVeiculo">
+        <PropertyRef Name="IdTipoVeiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VeiculosAntigosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TbFabricante" EntityType="Self.TbFabricante" />
+    <EntitySet Name="TbTipoDeVeiculo" EntityType="Self.TbTipoDeVeiculo" />
+    <EntitySet Name="TbVeiculo" EntityType="Self.TbVeiculo" />
+    <AssociationSet Name="FK__TbVeiculo__IdFab__145C0A3F" Association="Self.FK__TbVeiculo__IdFab__145C0A3F">
+      <End Role="TbFabricante" EntitySet="TbFabricante" />
+      <End Role="TbVeiculo" EntitySet="TbVeiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TbVeiculo__IdTip__15502E78" Association="Self.FK__TbVeiculo__IdTip__15502E78">
+      <End Role="TbTipoDeVeiculo" EntitySet="TbTipoDeVeiculo" />
+      <End Role="TbVeiculo" EntitySet="TbVeiculo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

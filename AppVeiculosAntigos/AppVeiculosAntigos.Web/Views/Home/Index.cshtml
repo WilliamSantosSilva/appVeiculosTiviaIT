@@ -1,0 +1,300 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <div class="col-xs-4">
+
+    </div>
+    <div class="col-xs-8">
+        <div class="pull-right">
+            <button id="new" class="btn btn-primary">
+                <span class="glyphicon glyphicon-check"></span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-1">
+
+    </div>
+    <div class="col-xs-10">
+
+    </div>
+    <div class="col-xs-1">
+
+    </div>
+    <div class="col-xs-10">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Ano
+                    </th>
+                    <th>
+                        Modelo
+                    </th>
+                    <th>
+                        Descrição
+                    </th>
+                    <th>
+                        Fabricante
+                    </th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:listItem">
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-default btn-xs" data-bind="click:$EditCadastro">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-xs" data-bind="click:$Deletar">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-1">
+
+    </div>
+</div>
+
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="formModal-label">Cadastro</h4>
+            </div>
+            <div class="modal-body">
+                <form id="formCad" class="form form-horizontal" method="post">
+
+                    <div class="form-group" data-bind="">
+                        <label class="control-label col-xs-4">Id</label>
+                        <div class="col-xs-8">
+                            <input class="input-sm form-control" for="IdVeiculo" name="IdVeiculo" id="IdVeiculo" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">Descrição</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control input-sm" id="Descricao" for="Descricao" name="Descricao" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">Modelo</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control input-sm" for="Modelo" id="Modelo" name="Modelo" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">Ano</label>
+                        <div class="col-xs-8">
+                            <input type="number" for="AnoFabricacao" id="AnoFabricacao" name="AnoFabricacao" class="form-control input-sm" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">Fabricante</label>
+                        <div class="col-xs-8">
+                            <select class="form-control" id="Fabricante" name="Fabricante" for="Fabricante" data-bind="options:Fabricante, optionsText:'Descricao', optionsValue:'IdFabricante', optionsCaption:'Selecione um item', value:IdFabricante">
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">Tipo Veículo</label>
+                        <div class="col-xs-8">
+                            <select class="form-control" id="TipoVeiculo" name="TipoVeiculo" for="TipoVeiculo" data-bind="options:TipoVeiculo, optionsText:'Descricao', optionsValue:'IdVeiculo', optionsCaption:'Selecione um item', value:IdTipoVeiculo"></select>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/ko")
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            function InicializarJs() {
+                var model = new MVVM();
+                ko.applyBindings(model);
+            }
+
+            function MVVM() {
+                var self = this;
+                self.url = 'http://localhost:50095/api/';
+
+                self.listItem = ko.observableArray();
+
+                self.TipoVeiculo = ko.observableArray();
+                self.Fabricante = ko.observableArray();
+                self.IdTipoVeiculo = ko.observable();
+                self.IdFabricante = ko.observable();
+
+
+                $("#new").on("click", function () {
+                                       
+                    $("#formModal").modal("show");
+
+                    $("#AnoFabricacao").val('');
+                    $("#Descricao").val('');
+                    $("#IdVeiculo").val('');
+                    $("#Modelo").val('');
+                    self.IdFabricante();
+                    self.IdTipoVeiculo();
+                });
+
+                self.getDados = function () {
+                    $.ajax(
+                    {
+                        url: self.url + 'veiculo/listall',
+                        type: 'GET',
+                        dataType: 'application/json',
+                        crossDomain: true,
+                        success: function (data) {
+                            //$('div').html(data);
+                            console.log("data", data);
+                        },
+                        error: function (data) {
+                            // console.log('erro', data);
+                            console.log("erro",data);
+                        }
+                    });                 
+                };
+                
+                self.getFabricante = function () {
+                    $.ajax(
+                    {
+                        url: self.url + 'fabricante/listall',
+                        type: 'GET',
+                        dataType: 'application/json',
+                        success: function (data) {
+                            //$('div').html(data);
+                            console.log("data", data);
+                        },
+                        error: function (data) {
+                            // console.log('erro', data);
+                            console.log("erro", data);
+                        }
+                    });
+                }
+
+                self.getTipoVeiculo = function () {
+                    $.ajax(
+                    {
+                        url: self.url + 'tipoveiculo/listall',
+                        type: 'GET',
+                        dataType: 'application/json',
+                        success: function (data) {
+                            //$('div').html(data);
+                            console.log("data", data);
+                        },
+                        error: function (data) {
+                            // console.log('erro', data);
+                            console.log("erro", data);
+                        }
+                    });
+                }
+                
+                self.getDados();
+                self.getFabricante();
+                self.getTipoVeiculo();
+
+                self.EditCadastro = function (data) {
+                    $("#AnoFabricacao").val(data.AnoFabricacao);
+                    $("#Descricao").val(data.Descricao);
+                    $("#IdVeiculo").val(data.IdVeiculo);
+                    $("#Modelo").val(data.Modelo);
+                    self.IdFabricante(data.Fabricante.IdFabricante);
+                    self.IdTipoVeiculo(data.TipoVeiculo.IdVeiculo);
+                    $("#formModal").modal("show");
+                }
+
+                self.SalvarNovoCadastro = function () {
+                    var form = $("#formCad").serializeArray();
+                                       
+                    $.ajax(
+                       {
+                           url: self.url + 'veiculo/listall',
+                           type: 'POST',
+                           data: form,
+                           dataType: 'application/json',
+                           success: function (data) {
+                               //$('div').html(data);
+                               console.log("data", data);
+
+                               self.getDados();
+                           },
+                           error: function (data) {
+                               console.log('erro', data);
+                           }
+                       });
+                };
+
+                self.Atualizar = function () {
+
+                    var form = $("#formCad").serializeArray();
+
+                    $.ajax(
+                      {
+                          url: self.url + 'veiculo/',
+                          type: 'PUT',
+                          data: form,
+                          dataType: 'application/json',
+                          success: function (data) {
+                              //$('div').html(data);
+                              console.log("data", data);
+                              self.getDados();
+                          },
+                          error: function (data) {
+                              console.log('erro', data);
+                          }
+                      });
+                };
+
+                self.Deletar = function (data) {
+
+                    $.ajax(
+                      {
+                          url: self.url + 'veiculo/',
+                          type: 'DELETE',
+                          data: data.IdVeiculo,
+                          dataType: 'application/json',
+                          success: function (data) {
+                              //$('div').html(data);
+                              console.log("data", data);
+                              self.getDados();
+                          },
+                          error: function (data) {
+                              console.log('erro', data);
+                          }
+                      });
+                };
+            }
+
+            InicializarJs();
+        });
+    </script>
+}

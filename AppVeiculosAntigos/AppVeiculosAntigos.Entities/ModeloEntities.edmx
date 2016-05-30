@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VeiculosAntigosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TbFabricante">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TbTipoDeVeiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TbVeiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="1000" />
+          <Property Name="AnoFabricao" Type="int" />
+          <Property Name="Modelo" Type="varchar" MaxLength="200" />
+          <Property Name="IdFabricante" Type="int" />
+          <Property Name="IdTipoVeiculo" Type="int" />
+        </EntityType>
+        <Association Name="FK__TbVeiculo__IdFab__145C0A3F">
+          <End Role="TbFabricante" Type="Self.TbFabricante" Multiplicity="0..1" />
+          <End Role="TbVeiculo" Type="Self.TbVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TbFabricante">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TbVeiculo">
+              <PropertyRef Name="IdFabricante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TbVeiculo__IdTip__15502E78">
+          <End Role="TbTipoDeVeiculo" Type="Self.TbTipoDeVeiculo" Multiplicity="0..1" />
+          <End Role="TbVeiculo" Type="Self.TbVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TbTipoDeVeiculo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TbVeiculo">
+              <PropertyRef Name="IdTipoVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VeiculosAntigosModelStoreContainer">
+          <EntitySet Name="TbFabricante" EntityType="Self.TbFabricante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TbTipoDeVeiculo" EntityType="Self.TbTipoDeVeiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TbVeiculo" EntityType="Self.TbVeiculo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TbVeiculo__IdFab__145C0A3F" Association="Self.FK__TbVeiculo__IdFab__145C0A3F">
+            <End Role="TbFabricante" EntitySet="TbFabricante" />
+            <End Role="TbVeiculo" EntitySet="TbVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TbVeiculo__IdTip__15502E78" Association="Self.FK__TbVeiculo__IdTip__15502E78">
+            <End Role="TbTipoDeVeiculo" EntitySet="TbTipoDeVeiculo" />
+            <End Role="TbVeiculo" EntitySet="TbVeiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VeiculosAntigosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TbFabricante">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TbVeiculo" Relationship="Self.FK__TbVeiculo__IdFab__145C0A3F" FromRole="TbFabricante" ToRole="TbVeiculo" />
+        </EntityType>
+        <EntityType Name="TbTipoDeVeiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TbVeiculo" Relationship="Self.FK__TbVeiculo__IdTip__15502E78" FromRole="TbTipoDeVeiculo" ToRole="TbVeiculo" />
+        </EntityType>
+        <EntityType Name="TbVeiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="AnoFabricao" Type="Int32" />
+          <Property Name="Modelo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IdFabricante" Type="Int32" />
+          <Property Name="IdTipoVeiculo" Type="Int32" />
+          <NavigationProperty Name="TbFabricante" Relationship="Self.FK__TbVeiculo__IdFab__145C0A3F" FromRole="TbVeiculo" ToRole="TbFabricante" />
+          <NavigationProperty Name="TbTipoDeVeiculo" Relationship="Self.FK__TbVeiculo__IdTip__15502E78" FromRole="TbVeiculo" ToRole="TbTipoDeVeiculo" />
+        </EntityType>
+        <Association Name="FK__TbVeiculo__IdFab__145C0A3F">
+          <End Role="TbFabricante" Type="Self.TbFabricante" Multiplicity="0..1" />
+          <End Role="TbVeiculo" Type="Self.TbVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TbFabricante">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TbVeiculo">
+              <PropertyRef Name="IdFabricante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TbVeiculo__IdTip__15502E78">
+          <End Role="TbTipoDeVeiculo" Type="Self.TbTipoDeVeiculo" Multiplicity="0..1" />
+          <End Role="TbVeiculo" Type="Self.TbVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TbTipoDeVeiculo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TbVeiculo">
+              <PropertyRef Name="IdTipoVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VeiculosAntigosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TbFabricante" EntityType="Self.TbFabricante" />
+          <EntitySet Name="TbTipoDeVeiculo" EntityType="Self.TbTipoDeVeiculo" />
+          <EntitySet Name="TbVeiculo" EntityType="Self.TbVeiculo" />
+          <AssociationSet Name="FK__TbVeiculo__IdFab__145C0A3F" Association="Self.FK__TbVeiculo__IdFab__145C0A3F">
+            <End Role="TbFabricante" EntitySet="TbFabricante" />
+            <End Role="TbVeiculo" EntitySet="TbVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TbVeiculo__IdTip__15502E78" Association="Self.FK__TbVeiculo__IdTip__15502E78">
+            <End Role="TbTipoDeVeiculo" EntitySet="TbTipoDeVeiculo" />
+            <End Role="TbVeiculo" EntitySet="TbVeiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VeiculosAntigosModelStoreContainer" CdmEntityContainer="VeiculosAntigosEntities">
+          <EntitySetMapping Name="TbFabricante">
+            <EntityTypeMapping TypeName="VeiculosAntigosModel.TbFabricante">
+              <MappingFragment StoreEntitySet="TbFabricante">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TbTipoDeVeiculo">
+            <EntityTypeMapping TypeName="VeiculosAntigosModel.TbTipoDeVeiculo">
+              <MappingFragment StoreEntitySet="TbTipoDeVeiculo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TbVeiculo">
+            <EntityTypeMapping TypeName="VeiculosAntigosModel.TbVeiculo">
+              <MappingFragment StoreEntitySet="TbVeiculo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="AnoFabricao" ColumnName="AnoFabricao" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="IdFabricante" ColumnName="IdFabricante" />
+                <ScalarProperty Name="IdTipoVeiculo" ColumnName="IdTipoVeiculo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

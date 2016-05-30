@@ -1,0 +1,15 @@
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\AppVeiculosAntigos.Business.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\AppVeiculosAntigos.Business.pdb
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\obj\Debug\AppVeiculosAntigos.Business.csprojResolveAssemblyReference.cache
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\obj\Debug\AppVeiculosAntigos.Business.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\obj\Debug\AppVeiculosAntigos.Business.pdb
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\AppVeiculosAntigos.Base.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\AppVeiculosAntigos.Dal.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\AppVeiculosAntigos.DTO.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\AppVeiculosAntigos.Entities.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\EntityFramework.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\AppVeiculosAntigos.Base.pdb
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\AppVeiculosAntigos.Dal.pdb
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\AppVeiculosAntigos.DTO.pdb
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\AppVeiculosAntigos.Entities.pdb
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Business\bin\Debug\EntityFramework.xml

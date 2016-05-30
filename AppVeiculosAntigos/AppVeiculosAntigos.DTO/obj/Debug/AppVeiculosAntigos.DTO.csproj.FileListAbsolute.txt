@@ -1,0 +1,5 @@
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.DTO\bin\Debug\AppVeiculosAntigos.DTO.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.DTO\bin\Debug\AppVeiculosAntigos.DTO.pdb
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.DTO\obj\Debug\AppVeiculosAntigos.DTO.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.DTO\obj\Debug\AppVeiculosAntigos.DTO.pdb
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.DTO\obj\Debug\AppVeiculosAntigos.DTO.csprojResolveAssemblyReference.cache

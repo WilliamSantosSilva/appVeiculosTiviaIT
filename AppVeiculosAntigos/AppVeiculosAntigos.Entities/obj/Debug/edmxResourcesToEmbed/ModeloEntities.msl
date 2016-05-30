@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VeiculosAntigosModelStoreContainer" CdmEntityContainer="VeiculosAntigosEntities">
+    <EntitySetMapping Name="TbFabricante">
+      <EntityTypeMapping TypeName="VeiculosAntigosModel.TbFabricante">
+        <MappingFragment StoreEntitySet="TbFabricante">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbTipoDeVeiculo">
+      <EntityTypeMapping TypeName="VeiculosAntigosModel.TbTipoDeVeiculo">
+        <MappingFragment StoreEntitySet="TbTipoDeVeiculo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbVeiculo">
+      <EntityTypeMapping TypeName="VeiculosAntigosModel.TbVeiculo">
+        <MappingFragment StoreEntitySet="TbVeiculo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="AnoFabricao" ColumnName="AnoFabricao" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="IdFabricante" ColumnName="IdFabricante" />
+          <ScalarProperty Name="IdTipoVeiculo" ColumnName="IdTipoVeiculo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,10 @@
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Entities\bin\Debug\AppVeiculosAntigos.Entities.dll.config
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Entities\bin\Debug\AppVeiculosAntigos.Entities.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Entities\bin\Debug\AppVeiculosAntigos.Entities.pdb
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Entities\bin\Debug\EntityFramework.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Entities\bin\Debug\EntityFramework.xml
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Entities\obj\Debug\AppVeiculosAntigos.Entities.dll
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Entities\obj\Debug\AppVeiculosAntigos.Entities.pdb
+C:\Temp\ProvaTiviaIT\AppVeiculosAntigos\AppVeiculosAntigos.Entities\obj\Debug\AppVeiculosAntigos.Entities.csprojResolveAssemblyReference.cache
